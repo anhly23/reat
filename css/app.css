@@ -1,0 +1,22 @@
+body{
+    background-color: pink;
+    h1{
+        color: rgb(255, 47, 0);
+        text-align: center;
+    }
+    p{
+        color: green;
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: 300;  
+        /* thin:100 light:-300 normal:-400 medium:-500 semi-bold:600 bold:-700 extra-bold */
+        text-align: justify;
+        text-decoration: none; /*các kiểu gạch ngang chữ*/
+        line-height: 1.5; /*độ cao của dòng*/
+        width: 400px;
+        border-bottom: 1px solid;
+        background-color: yellowgreen ;
+        float: left;
+        padding: 15px;
+    }
+} 

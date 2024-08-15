@@ -1,0 +1,25 @@
+body{
+    h1 {
+        line-height: 1.5; /*độ cao của dòng*/
+    }
+    h2 {
+       
+        float: right;
+        font-size: 14px;
+    }
+    h3{
+        border-bottom: 3px solid black;
+    }
+    table {
+        /* border-collapse: collapse;
+    }
+    th, td {
+        padding: 30px; Thêm khoảng cách giữa các ô bảng */
+        /* border: 1px solid black; */
+        border-spacing: 135px 10px;
+        .bold-column{
+            font-weight: bold;
+        }
+    }
+    
+}

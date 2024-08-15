@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function tinhTong() {
+            var n = parseInt(prompt("Nhập một số nguyên N:"));
+            if (isNaN(n)) {
+                alert("Vui lòng nhập một số nguyên hợp lệ.");
+                return;
+            }
+            var tong = 0;
+            for (var i = 1; i <= n; i++) {
+                tong += i;
+            }
+            alert("Tổng các số từ 1 đến " + n + " là: " + tong);
+        }
+    </script>
+</head>
+<body>
+    <h1>Tính Tổng</h1>
+    <button onclick="tinhTong()">Tính Tổng</button>
+</body>
+</html>

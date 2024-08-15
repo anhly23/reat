@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Vietlott</title>
+</head>
+<body>
+  <h1>Game Vietlott</h1>
+  <button onclick="playGame()">Mua vé và chơi</button>
+
+  <script>
+    // Hàm sinh ngẫu nhiên bộ 6 số khác nhau từ 0 → 55
+    function generateRandomNumbers() {
+      const numbers = new Set();
+      while (numbers.size < 6) {
+        const randomNum = Math.floor(Math.random() * 56);
+        numbers.add(randomNum);
+      }
+      return Array.from(numbers);
+    }
+
+    // Hàm kiểm tra số trùng khớp giữa hai bộ số
+    function checkMatchingNumbers(userNumbers, winningNumbers) {
+      const matchingNumbers = userNumbers.filter(num => winningNumbers.includes(num));
+      return matchingNumbers.length;
+    }
+
+    // Hàm tính giải thưởng dựa trên số lượng số trùng khớp
+    function calculatePrize(matchingCount) {
+      switch (matchingCount) {
+        case 3:
+          return "100K";
+        case 4:
+          return "1M";
+        case 5:
+          return "10M";
+        case 6:
+          return "Jackpot 10 tỷ";
+        default:
+          return "Không trúng thưởng";
+      }
+    }
+
+    // Hàm chính để chơi game
+    function playGame() {
+      const userNumbers = [];
+      for (let i = 1; i <= 6; i++) {
+        let num;
+        do {
+          num = parseInt(prompt(`Nhập số thứ ${i} (0 - 55):`), 10);
+        } while (isNaN(num) || num < 0 || num > 55 || userNumbers.includes(num));
+        userNumbers.push(num);
+      }
+
+      // Sinh bộ số trúng thưởng ngẫu nhiên
+      const winningNumbers = generateRandomNumbers();
+
+      // Kiểm tra số lượng số trùng khớp
+      const matchingCount = checkMatchingNumbers(userNumbers, winningNumbers);
+
+      // Tính giải thưởng
+      const prize = calculatePrize(matchingCount);
+
+      // Hiển thị kết quả
+      alert(`Bộ số người chơi chọn: ${userNumbers.join(", ")}`);
+      alert(`Bộ số trúng thưởng: ${winningNumbers.join(", ")}`);
+      alert(`Số lượng số trùng khớp: ${matchingCount}`);
+      alert(`Giải thưởng: ${prize}`);
+    }
+  </script>
+</body>
+</html>

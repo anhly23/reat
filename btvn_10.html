@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siêu nhân mãi đỉnh</title>
+    <style>
+        /* Định dạng cho phần tử hiển thị đồng hồ đếm ngược */
+        #dongHo {
+            font-size: 2em;
+            text-align: center;
+            margin-top: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div id="dongHo">00:00</div>
+
+    <script>
+        // Hàm bắt đầu đếm ngược
+        function batDauDemNguoc() {
+            // Yêu cầu người dùng nhập số phút
+            let soPhut = parseInt(prompt("Nhập số phút:", "10"), 10);
+            // Kiểm tra tính hợp lệ của số phút và yêu cầu nhập lại nếu không hợp lệ
+            while (isNaN(soPhut) || soPhut < 0) {
+                soPhut = parseInt(prompt("Vui lòng nhập số phút hợp lệ (0 hoặc lớn hơn):", "10"), 10);
+            }
+
+            // Yêu cầu người dùng nhập số giây
+            let soGiay = parseInt(prompt("Nhập số giây:", "0"), 10);
+            // Kiểm tra tính hợp lệ của số giây và yêu cầu nhập lại nếu không hợp lệ
+            while (isNaN(soGiay) || soGiay < 0 || soGiay > 59) {
+                soGiay = parseInt(prompt("Vui lòng nhập số giây hợp lệ (0-59):", "0"), 10);
+            }
+
+            // Lấy phần tử HTML có id là 'dongHo' để hiển thị thời gian đếm ngược
+            const phanTuDongHo = document.getElementById('dongHo');
+
+            // Sử dụng hàm setInterval để cập nhật thời gian mỗi giây
+            const khoangThoiGian = setInterval(() => {
+                // Kiểm tra nếu giây bằng 0
+                if (soGiay === 0) {
+                    // Nếu phút cũng bằng 0, dừng đếm ngược
+                    if (soPhut === 0) {
+                        clearInterval(khoangThoiGian);
+                        phanTuDongHo.textContent = '00:00';
+                        alert('Hết giờ!');
+                        return;
+                    }
+                    // Giảm số phút và đặt lại giây thành 59
+                    soPhut--;
+                    soGiay = 59;
+                } else {
+                    // Giảm số giây
+                    soGiay--;
+                }
+
+                // Định dạng lại chuỗi hiển thị phút và giây
+                let chuoiPhut = soPhut < 10 ? '0' + soPhut : soPhut;
+                let chuoiGiay = soGiay < 10 ? '0' + soGiay : soGiay;
+                // Cập nhật nội dung của phần tử hiển thị thời gian
+                phanTuDongHo.textContent = `${chuoiPhut}:${chuoiGiay}`;
+            }, 1000); // Cập nhật mỗi giây (1000 milliseconds)
+        }
+
+        // Gọi hàm bắt đầu đếm ngược khi tải trang
+        batDauDemNguoc();
+    </script>
+</body>
+</html>

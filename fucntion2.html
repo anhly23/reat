@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tính Chu Vi và Diện Tích Hình Tam Giác</title>
+  <script>
+    // Hàm tính chu vi tam giác
+    function calculatePerimeter(a, b, c) {
+      return a + b + c;
+    }
+
+    // Hàm tính diện tích tam giác sử dụng công thức Heron
+    function calculateArea(a, b, c) {
+      var s = (a + b + c) / 2;
+      return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+
+    // Hàm chính để nhập độ dài cạnh và tính chu vi, diện tích
+    function calculateTriangle() {
+      var a = parseInt(prompt("Nhập độ dài cạnh a:"), 10);
+      var b = parseInt(prompt("Nhập độ dài cạnh b:"), 10);
+      var c = parseInt(prompt("Nhập độ dài cạnh c:"), 10);
+
+      var perimeter = calculatePerimeter(a, b, c);
+      var area = calculateArea(a, b, c);
+
+      alert(`Chu vi của tam giác: ${perimeter}`);
+      alert(`Diện tích của tam giác: ${area.toFixed(2)}`);
+    }
+
+    // Gọi hàm tính toán khi trang web được tải
+    window.onload = calculateTriangle;
+  </script>
+</head>
+<body>
+  <h1>Tính Chu Vi và Diện Tích Hình Tam Giác</h1>
+</body>
+</html>

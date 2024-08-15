@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <script type="text/javascript">
+        function tinhlaisuatnganhang(sotien,sonam){
+            var year = 0;
+            while(year < year){
+                sotien = sotien + sotien * 8/100;
+                year++;
+            }
+            return sotien
+        }
+
+        var sotien = prompt("nhap so tien muon gui tiet kiem");
+        sotien = parseInt(sotien);
+        var sonam = prompt("nhap so nam muon gưi");
+        sonam = parseInt(sonam);
+
+        sotienthuduoc = tinhlaisuatnganhang(sotien,sonam);
+
+        alert(`so tien thu duoc : ${sotienthuduoc}`);
+
+        var x = 5000;
+        var y = 8;
+
+        var sotiencuoicung = tinhlaisuatnganhang(x,y);
+
+        alert(` số tiền thu được sau khi gửi 5000 trong 8 năm là:${sotiencuoicung}`)
+
+        var sotien2 = tinhlaisuatnganhang(1000,2);
+        alert(`so tien 2: ${sotien2}`);
+    </script>
+</body>
+</html>

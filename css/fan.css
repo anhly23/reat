@@ -1,0 +1,8 @@
+#fan {
+    margin: 350px;
+    width: 450px;
+    height: 450px;
+    transition: transform 300ms;
+    background-image: url("../images/fan.png");
+    background-size: 450px;
+}

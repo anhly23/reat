@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò chơi Đặt cược</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .input-group label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trò chơi Đặt cược</h1>
+        <div class="input-group">
+            <label for="numberInput">Nhập con số bạn chọn (0 - 99):</label>
+            <input type="number" id="numberInput" min="0" max="99">
+        </div>
+        <div class="input-group">
+            <label for="betAmount">Nhập số tiền cược (VND):</label>
+            <input type="number" id="betAmount" min="0">
+        </div>
+        <button onclick="placeBet()">Đặt cược</button>
+        <div id="result"></div>
+    </div>
+
+    <script type="text/javascript">
+        function placeBet() {
+            var chosenNumber = parseInt(document.getElementById('numberInput').value);
+            var betAmount = parseInt(document.getElementById('betAmount').value);
+            
+            if (isNaN(chosenNumber) || chosenNumber < 0 || chosenNumber > 99) {
+                alert("Vui lòng nhập một số hợp lệ từ 0 đến 99!");
+                return;
+            }
+
+            if (isNaN(betAmount) || betAmount <= 0) {
+                alert("Vui lòng nhập số tiền cược hợp lệ!");
+                return;
+            }
+
+            // Tạo ngẫu nhiên một mảng có 23 giá trị (tương đương 23 giải) từ 0 đến 99
+            var randomNumbers = Array.from({length: 23}, () => Math.floor(Math.random() * 100));
+            console.log("Các số ngẫu nhiên là: ", randomNumbers);
+
+            // Kiểm tra xem số của người chơi có trong mảng không
+            var isWinner = randomNumbers.includes(chosenNumber);
+
+            // Tính toán số tiền nhận được
+            var winningAmount = isWinner ? (betAmount * (80000 / 23000)) : 0;
+
+            // Hiển thị kết quả
+            var resultText = isWinner ? `Chúc mừng! Bạn đã thắng và nhận được ${winningAmount.toFixed(0)} VND.` : "Rất tiếc! Bạn không trúng thưởng.";
+            document.getElementById('result').innerHTML = `<p>${resultText}</p>`;
+        }
+    </script>
+</body>
+</html>

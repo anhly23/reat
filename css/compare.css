@@ -1,0 +1,20 @@
+/*
+1. khi 2 style cùng cấp nói về 1 property -> ưu tiên dùng cái nói sau
+2. khi 2 style khác cấp nói cùng 1 property -> ưu tiên dùng cái cấp cao hơn 
+-> các cấp cao dần : tag < parent tag < class < parent class < id < parent id 
+*/
+body #idcompare {
+    color: rebeccapurple;
+}
+#idcompare {
+    color: pink;
+}
+body .classcompare{
+    color: yellow;
+}
+.classcompare{
+    color: blue;
+}
+h1{
+    color: red;
+}

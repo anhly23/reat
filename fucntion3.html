@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xử lý Mảng</title>
+  <script>
+    // Hàm tìm số lớn nhất của một mảng
+    function timSoLonNhat(mang) {
+      return Math.max(...mang);
+    }
+
+    // Hàm tính trung bình cộng của một mảng
+    function tinhTrungBinhCong(mang) {
+      var tong = mang.reduce((acc, num) => acc + num, 0);
+      return tong / mang.length;
+    }
+
+    // Hàm tìm số dương nhỏ nhất trong một mảng số
+    function timSoDuongNhoNhat(mang) {
+      var soDuong = mang.filter(num => num > 0);
+      return Math.min(...soDuong);
+    }
+
+    // Hàm tính trung bình cộng các số dương trong mảng
+    function tinhTrungBinhCongSoDuong(mang) {
+      var soDuong = mang.filter(num => num > 0);
+      var tong = soDuong.reduce((acc, num) => acc + num, 0);
+      return tong / soDuong.length;
+    }
+
+    // Hàm chính để nhập mảng và chạy các hàm xử lý mảng
+    function chayCacHam() {
+      var mang = prompt("Nhập các phần tử của mảng, cách nhau bằng dấu phẩy:").split(',').map(Number);
+
+      var soLonNhat = timSoLonNhat(mang);
+      var trungBinhCong = tinhTrungBinhCong(mang);
+      var soDuongNhoNhat = timSoDuongNhoNhat(mang);
+      var trungBinhCongSoDuong = tinhTrungBinhCongSoDuong(mang);
+
+      alert(`Số lớn nhất: ${soLonNhat}`);
+      alert(`Trung bình cộng: ${trungBinhCong}`);
+      alert(`Số dương nhỏ nhất: ${soDuongNhoNhat}`);
+      alert(`Trung bình cộng các số dương: ${trungBinhCongSoDuong}`);
+    }
+
+    // Gọi hàm tính toán khi trang web được tải
+    window.onload = chayCacHam;
+  </script>
+</head>
+<body>
+  <h1>Xử lý Mảng</h1>
+</body>
+</html>
